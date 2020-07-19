@@ -1,2 +1,2 @@
-- [Changes](/)
-- [Known Issues](known-issues.md)
+- [Cambios](/)
+- [Problemas conocidos](known-issues.md)

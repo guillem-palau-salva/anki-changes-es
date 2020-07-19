@@ -1,125 +1,119 @@
-# Known Issues
+# Problemas conocidos
 
-## Hardware acceleration and startup issues on Windows/Linux
+## Aceleración de hardware y problemas de inicio en Windows/Linux
 
-Hardware acceleration defaults to off on Windows and Linux. Enabling it
-in the preferences screen and restarting Anki may make Anki’s interface
-more responsive, but some users may experience missing menubars, blank
-windows or crashes when it is enabled.
+La aceleración de hardware por defecto está desactivada en Windows y Linux. Habilitándolo
+en la pantalla de preferencias y reiniciando Anki puede hacer que la interfaz de Anki
+más receptiva, pero algunos usuarios pueden experimentar barras de menú faltantes, ventanas en blanco
+o se bloquee cuando está habilitado.
 
-On Windows if you’re unable to get to Anki’s preferences screen and
-restarting Anki a few times does not help, you may need to manually
-adjust the graphics driver. You can do this by starting cmd.exe and
-typing the following:
+En Windows si no puede acceder a la pantalla de preferencias de Anki y
+reiniciar Anki varias veces no ayuda, es posible que deba ajustar el controlador
+de gráficos manualmente. Puede hacerlo iniciando cmd.exe y
+escribiendo lo siguiente:
 
     echo auto > %APPDATA%\Anki2\gldriver
 
-There are three settings you can try: 'auto', 'angle', and 'software'.
-If you have problems both when hardware acceleration is turned on and
-turned off in the preferences, it’s worth giving 'angle' a go.
+Puede probar tres configuraciones: 'auto', 'angle' y 'software'.
+Si tiene problemas cuando la aceleración de hardware está activada y
+desactivado en las preferencias, vale la pena intentar 'angle'.
 
-On Linux, you can write either 'auto' or 'software' into
-~/.local/share/Anki2/gldriver to adjust the driver. Please note that if
-you’re using nouveau, it is known to be buggy and it only supports
-software mode.
+En Linux, puede escribir 'auto' o 'software' en
+~ .local/share/Anki2/gldriver para ajustar el controlador. Tenga en cuenta que si
+estás usando nouveau, se sabe que tiene errores y solo admite
+modo de software.
 
-Interface speed
-===============
+## Velocidad de la interfaz
 
-Even if you enable hardware acceleration as mentioned above, you may
-find Anki takes longer to start and show new windows - especially if
-your computer is not the fastest. This is caused by the use of a newer
-web toolkit, which brings new features and security improvements, but is
-unfortunately more resource intensive. The web toolkit older Anki
-versions use has been abandoned at this point, so it is no longer an
-option for future releases.
+Incluso si habilita la aceleración de hardware como se mencionó anteriormente, puede
+encontrar a Anki tarde más en iniciar y mostrar nuevas ventanas, especialmente si
+su ordenador no es la más rápido. Esto es a causa del uso de una nuevo
+kit de herramientas web, que trae nuevas características y mejoras de seguridad, pero
+desafortunadamente requeire más recursos. El kit de herramientas web de versiones más
+antiguas de Anki se ha abandonado, por lo que ya no es un
+opción para futuros lanzamientos.
 
-Blank screens and eGPUs on Macs
-===============================
+## Pantallas en blanco y eGPU en Mac
 
-If you experience blank screens when using an external graphics card on
-a Mac, You can either use the -alternate version from the download site,
-or ctrl+click on the Anki app, click "Get Info", and enable the "prefer
-eGPU" option.
+Si experimenta pantallas en blanco cuando usa una tarjeta gráfica externa en
+Mac, puede usar la versión -alternate (alternativa) del sitio de descarga,
+o ctrl + clic en la aplicación Anki, haga clic en _"Obtener información"_ y active la opción _"preferir
+eGPU"_.
 
-Shortcuts
-=========
+## Atajos de teclado
 
-The undo shortcut is different in the alternate version due to an issue
-with the toolkit. You can discover the alternate shortcut by looking at
-the Edit menu of the main screen.
+El acceso directo para deshacer es diferente en la versión alternativa debido a un problema
+con el juego de herramientas. Puede descubrir el acceso directo alternativo mirando
+el menú _Editar_ de la pantalla principal.
 
-On macOS, the alternate build does not support some shortcuts like
-cmd+left/right when editing cards. Fn+left/right does work instead. You
-can also use a third party tool like BetterTouchTool or Karabiner to
-intercept the cmd+left/right keystroke when you type it into Anki, and
-have it automatically be rewritten to use the function key instead.
+En macOS, la compilación alternativa no admite algunos accesos directos como
+cmd + izquierda/derecha al editar tarjetas. Fn + izquierda/derecha funciona en su lugar.
+También puede usar una herramienta de terceros como BetterTouchTool o Karabiner para
+interceptar la combinación de teclas cmd + izquierda/derecha cuando la escriba en Anki, y
+haga que se reescriba automáticamente para usar la tecla de función en su lugar.
 
-Copy & paste problems on Windows
-================================
+## Problemas de copiar y pegar en Windows
 
-If you are experiencing problems with copying and pasting on Windows,
-please check if you are running other programs on your computer that
-monitor the clipboard, such as dictionary programs, clipboard managers
-or clipping tools. The toolkit Anki uses can have trouble when such
-programs are running.
+Si tiene problemas al copiar y pegar en Windows,
+compruebe si está ejecutando otros programas en su ordenador que
+monitoreen el portapapeles, como programas de diccionario, administradores de portapapeles
+o herramientas de recortes. El kit de herramientas que usa Anki puede tener problemas cuando
+los programas se están ejecutando.
 
-Fcitx on Linux
-==============
+## Fcitx en Linux
 
-The standard Anki build includes fcitx support, but it may not work on
-all distributions. If you are unable to use fcitx, you may want to run
-Anki from source, or switch to a different input method.
+La compilación estándar de Anki incluye soporte fcitx, pero puede no funcionar en
+todas las distribuciones. Si no puede usar fcitx, puede ejecutar
+Anki desde el código fuente, o cambie a un método de entrada diferente.
 
-Text size
-=========
+## Tamano del texto
 
-If you find the text is the wrong size, there are two environmental
-variables you can try:
+Si encuentra que el texto es del tamaño incorrecto, hay dos
+variables que puede probar:
 
--   ANKI\_NOHIGHDPI=1 will turn off some of Qt’s high dpi support
+- ANKI\_NOHIGHDPI=1 desactivará parte del soporte de alta resolución de Qt.
 
--   ANKI\_WEBSCALE=1 will alter the scale of Anki’s web views (like the
-    deck list, study screen, etc), while leaving interface elements like
-    the menu bar alone. Replace 1 with the desired scale, such as 1.5 or
-    0.75.
+- ANKI\_WEBSCALE=1 alterará la escala de las vistas web de Anki (como el
+     lista de mazos, pantalla de estudio, etc.), dejando elementos de interfaz como
+     la barra de menú solo. Reemplace 1 con la escala deseada, así como 1.5 o
+     0.75.
 
-On Windows you can add these to a batch file to make it easier to start
-Anki. For example, create a file called startanki.bat on your desktop
-with the following text:
+En Windows, puede agregarlos a un archivo por lotes (batch) para que sea más fácil iniciar
+Anki. Por ejemplo, cree un archivo llamado _startanki.bat_ en su escritorio
+con el siguiente texto:
 
     set ANKI_WEBSCALE=0.75
     start "Anki" "C:\Program Files\Anki\anki"
 
-After saving, you can double click on the file to start Anki with that
-setting.
 
-SSL errors
-==========
 
-Some work and school networks intercept your internet traffic, and this
-can cause errors when syncing and downloading add-ons. You can prevent
-the errors from occurring by setting the environmental variable
-"ANKI\_NOVERIFYSSL" to "1".
+## Errores SSL
 
-When you enable this option, you are telling Anki not to verify that it
-is actually talking with AnkiWeb. This means that not only your work or
-school, but also a bad actor on the local network may be able to
-intercept your syncing traffic.
+Algunas redes laborales y escolares interceptan el tráfico de Internet, y esto
+puede causar errores al sincronizar y descargar complementos. Puede prevenir
+los errores se producen al establecer la variable ambiental
+"ANKI\_NOVERIFYSSL" a "1".
 
-On Windows, you can create a .bat file as described in the Text size
-section above.
+Cuando habilite esta opción, le está diciendo a Anki que no verifique que
+en realidad está hablando con AnkiWeb. Esto significa que no solo su trabajo o
+escuela, pero también un mal actor en la red local puede ser capaz de
+interceptar su tráfico de sincronización.
 
-On Mac, you can open Terminal.app, then start Anki with the following
-command:
+En Windows, puede crear un archivo .bat como se describe en la sección
+Tamaño del texto más arriba.
+
+En Mac, puede abrir Terminal.app, luego inicie Anki con el siguiente
+mando:
 
     ANKI_NOVERIFYSSL=1 open /Applications/Anki.app
 
-On Linux, use the following in a terminal:
+En Linux, use lo siguiente en una terminal:
 
     ANKI_NOVERIFYSSL=1 anki
 
-Once you’ve started Anki with SSL disabled, you can download the
-following add-on to make the change permanent:
+Una vez que haya iniciado Anki con SSL deshabilitado, puede descargar el
+siguiente complemento para que el cambio sea permanente:
 
 <https://ankiweb.net/shared/info/878367706>
+
+
